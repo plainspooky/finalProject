@@ -1,0 +1,15 @@
+# created by virtualenv automatically
+*.csv
+*.sqlite3
+*swp
+*~
+.coverage
+.venv
+.env
+.pytest_cache
+.vagrant
+__pycache__/
+coverage.xml
+poetry.lock
+py3/
+staticfiles

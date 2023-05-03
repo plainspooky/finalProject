@@ -4,12 +4,11 @@
 *swp
 *~
 .coverage
-.venv
 .env
 .pytest_cache
 .vagrant
 __pycache__/
 coverage.xml
 poetry.lock
-py3/
+venv/
 staticfiles

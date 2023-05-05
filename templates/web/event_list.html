@@ -1,0 +1,32 @@
+{% extends '../base.html' %}
+{% block content %}
+  <h2>
+    Eventos
+    <small>| <a href="{% url 'event-create' %}">Novo</a></small>
+  </h2>
+  {% if object_list %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Descrição</th>
+          <th>Responsável</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in object_list %}
+          <tr>
+            <td>{{ event.pk }}</td>
+            <td>{{ event.description }}</td>
+            <td>
+              <a href="{% url 'event-update' event.pk %}">Editar</a> |
+              <a href="{% url 'event-delete' event.pk %}">Apagar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não existem raças cadastradas</p>
+  {% endif %}
+{% endblock %}

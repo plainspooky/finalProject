@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from simplims import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("events", views.EventListView.as_view(), name="event-list"),
 ]

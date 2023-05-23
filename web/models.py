@@ -9,9 +9,9 @@ class OtherDocuments(models.Model):
         verbose_name="número de inscrição",
     )
     description = models.CharField(
-        help_text="nome da autarquia"
+        help_text="nome da autarquia",
         max_length=200,
-        verbose_name="nome da autarquia",
+        verbose_name="nome da autarquia"
     )
 class Company(models.Model):
     class Meta:
@@ -22,7 +22,7 @@ class Company(models.Model):
         max_length=200,
         verbose_name="Razão Social",
     )
-    address = models.ChardField(
+    address = models.CharField(
         help_text="endereço da empresa contratada",
         max_length=200,
         verbose_name="Endereço",
@@ -35,8 +35,8 @@ class Company(models.Model):
     cnpj = models.CharField(
         blank=True,
         max_length=50,
-        verbose_name=_("CNPJ"),
-        help_text=_("CNPJ"),
+        verbose_name=("CNPJ"),
+        help_text=("CNPJ"),
     )
 
 class ContractedCompany(Company):

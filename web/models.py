@@ -2,6 +2,63 @@ from django.db import models
 
 
 # Create your models here.
+class OtherDocuments(models.Model):
+    registration_number = models.CharField(
+        help_text="número de inscrição",
+        max_length=50,
+        verbose_name="número de inscrição",
+    )
+    description = models.CharField(
+        help_text="nome da autarquia"
+        max_length=200,
+        verbose_name="nome da autarquia",
+    )
+class Company(models.Model):
+    class Meta:
+        abstract = True
+
+    corporate_name = models.CharField(
+        help_text="razão social da empresa contratada",
+        max_length=200,
+        verbose_name="Razão Social",
+    )
+    address = models.ChardField(
+        help_text="endereço da empresa contratada",
+        max_length=200,
+        verbose_name="Endereço",
+    )
+    phone_fax = models.CharField(
+            help_text="telefone para contato",
+            max_length=50,
+            verbose_name="Telefone/Fax",
+    )
+    cnpj = models.CharField(
+        blank=True,
+        max_length=50,
+        verbose_name=_("CNPJ"),
+        help_text=_("CNPJ"),
+    )
+
+class ContractedCompany(Company):
+    other_documents = models.ForeignKey(
+        OtherDocuments,
+        on_delete=models.CASCADE,
+        verbose_name="Outros Documentos (licenças, registros e afins"
+    )
+class ContractingCompany(Company):
+    email = models.EmailField(
+        blank=True,
+        help_text="endereço e-Mail",
+        max_length=254,
+        null=True,
+        verbose_name="endereço e-Mail",
+    )
+    responsible_contact=models.CharField(
+        help_text="Nome do Responsável Técnico",
+        max_length=80,
+        verbose_name="nome do responsável técnico",
+    )
+
 class Event(models.Model):
     priorities_list = (
         ('0', 'Sem prioridade'),
@@ -36,6 +93,11 @@ class Event(models.Model):
         default=True,
         help_text="aberto ou fechado?",
         verbose_name="status",
+    )
+    other_documents = models.ForeignKey(
+        OtherDocuments,
+        on_delete=models.CASCADE,
+        verbose_name="Outros documentos"
     )
 
     def __str__(self):

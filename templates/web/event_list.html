@@ -18,6 +18,7 @@
           <tr>
             <td>{{ event.pk }}</td>
             <td>{{ event.description }}</td>
+            <td>{{ event.responsible_technician }}</td>
             <td>
               <a href="{% url 'event-update' event.pk %}">Editar</a> |
               <a href="{% url 'event-delete' event.pk %}">Apagar</a>

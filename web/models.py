@@ -94,11 +94,5 @@ class Event(models.Model):
         help_text="aberto ou fechado?",
         verbose_name="status",
     )
-    other_documents = models.ForeignKey(
-        OtherDocuments,
-        on_delete=models.CASCADE,
-        verbose_name="Outros documentos"
-    )
-
     def __str__(self):
         return self.description

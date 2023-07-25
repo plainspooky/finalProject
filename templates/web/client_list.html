@@ -2,32 +2,32 @@
 {% block content %}
   <h2>
     Clientes
-    <small>| <a href="{% url 'event-create' %}">Novo</a></small>
+    <small>| <a href="{% url 'client-create' %}">Novo</a></small>
   </h2>
   {% if object_list %}
     <table class="table">
       <thead>
         <tr>
           <th>Id</th>
-          <th>Descrição</th>
+          <th>Cliente</th>
           <th>Responsável</th>
         </tr>
       </thead>
       <tbody>
-        {% for event in object_list %}
+        {% for client in object_list %}
           <tr>
-            <td>{{ event.pk }}</td>
-            <td>{{ event.description }}</td>
-            <td>{{ event.responsible_technician }}</td>
+            <td>{{ client.pk }}</td>
+            <td>{{ client.corporate_name }}</td>
+            <td>{{ client.responsible_contact }}</td>
             <td>
-              <a href="{% url 'event-update' event.pk %}">Editar</a> |
-              <a href="{% url 'event-delete' event.pk %}">Apagar</a>
+              <a href="{% url 'client-update' event.pk %}">Editar</a> |
+              <a href="{% url 'client-delete' event.pk %}">Apagar</a>
             </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   {% else %}
-    <p>Não existem eventos cadastrados</p>
+    <p>Não existem clientes cadastrados</p>
   {% endif %}
 {% endblock %}

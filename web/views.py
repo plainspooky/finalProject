@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from .models import Event
-from .forms import EventForm
+from .models import Event, Client
+from .forms import EventForm, ClientForm
 
 
 class DeleteRecordMixin:
@@ -33,4 +33,27 @@ class EventView(EventViewMixin, DeleteRecordMixin, DeleteView):
     ...
 
 class EventDeleteView(EventViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+
+
+class ClientViewMixin:
+    model = Client
+    form_class = ClientForm
+    success_url = reverse_lazy("client-list")
+
+
+class ClientCreateView(ClientViewMixin, CreateView):
+    ...
+
+
+class ClientListView(ClientViewMixin, ListView):
+    ...
+
+class ClientUpdateView(ClientViewMixin, UpdateView):
+    ...
+class ClientView(ClientViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+class ClientDeleteView(ClientViewMixin, DeleteRecordMixin, DeleteView):
     ...

@@ -15,4 +15,17 @@ urlpatterns = [
         views.EventDeleteView.as_view(),
         name="event-delete",
     ),
+    path("", views.ClientListView.as_view(), name="client-list"),
+    path("client/new", views.ClientCreateView.as_view(), name="client-create"),
+    path(
+        "client/<int:pk>/edit",
+        views.ClientUpdateView.as_view(),
+        name="client-update",
+    ),
+    path(
+        "client/<int:pk>/delete",
+        views.ClientDeleteView.as_view(),
+        name="client-delete",
+    ),
+
 ]

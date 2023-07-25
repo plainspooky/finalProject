@@ -44,8 +44,11 @@ class EnvironmentalConsultancy(Company):
     other_documents = models.ForeignKey(
         OtherDocuments,
         on_delete=models.CASCADE,
-        verbose_name="Outros Documentos (licenças, registros e afins"
+        verbose_name="Outros Documentos (licenças, registros e afins)"
     )
+    def __str__(self):
+        return self.corporate_name
+
 
 '''The Contracting Company - The appraised company '''
 class Client(Company):
@@ -61,6 +64,8 @@ class Client(Company):
         max_length=80,
         verbose_name="nome do responsável técnico",
     )
+    def __str__(self):
+        return self.corporate_name
 
 class Event(models.Model):
     priorities_list = (

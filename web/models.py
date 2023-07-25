@@ -39,13 +39,16 @@ class Company(models.Model):
         help_text=("CNPJ"),
     )
 
-class ContractedCompany(Company):
+'''The Contracted Company - The appraisal company - ACME '''
+class EnvironmentalConsultancy(Company):
     other_documents = models.ForeignKey(
         OtherDocuments,
         on_delete=models.CASCADE,
         verbose_name="Outros Documentos (licenças, registros e afins"
     )
-class ContractingCompany(Company):
+
+'''The Contracting Company - The appraised company '''
+class Client(Company):
     email = models.EmailField(
         blank=True,
         help_text="endereço e-Mail",

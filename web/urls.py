@@ -15,7 +15,7 @@ urlpatterns = [
         views.EventDeleteView.as_view(),
         name="event-delete",
     ),
-    path("", views.ClientListView.as_view(), name="client-list"),
+    path("client", views.ClientListView.as_view(), name="client-list"),
     path("client/new", views.ClientCreateView.as_view(), name="client-create"),
     path(
         "client/<int:pk>/edit",

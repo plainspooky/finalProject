@@ -20,8 +20,8 @@
             <td>{{ client.corporate_name }}</td>
             <td>{{ client.responsible_contact }}</td>
             <td>
-              <a href="{% url 'client-update' event.pk %}">Editar</a> |
-              <a href="{% url 'client-delete' event.pk %}">Apagar</a>
+              <a href="{% url 'client-update' client.pk %}">Editar</a> |
+              <a href="{% url 'client-delete' client.pk %}">Apagar</a>
             </td>
           </tr>
         {% endfor %}

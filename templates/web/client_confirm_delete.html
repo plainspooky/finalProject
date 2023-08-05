@@ -1,0 +1,9 @@
+{% extends '../base.html' %}
+{% block content %}
+  <h2>Remover {{ object.name }}</h2>
+  <p>Você tem certeza?</p>
+  <form method='post'>
+    {% csrf_token %}
+    <button>Sim</button>
+  </form>
+{% endblock %}

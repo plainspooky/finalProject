@@ -1,0 +1,16 @@
+{% extends '../base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  {% if object %}
+    <h2>Editando {{ object.name }}</h2>
+  {% else %}
+    <h2>Novo cliente</h2>
+  {% endif %}
+  <form method="post">
+    <div>
+      {% csrf_token %}
+      {{ form|crispy }}
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+{% endblock %}

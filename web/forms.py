@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Event, Client
+from .models import Event, Client, Matrix
 
 class EventForm(forms.ModelForm):
     class Meta:
@@ -22,4 +22,12 @@ class ClientForm(forms.ModelForm):
             "cnpj",
             "email",
             "responsible_contact",
+        ]
+
+class MatrixForm(forms.ModelForm):
+
+    class Meta:
+        model = Matrix
+        fields = [
+            "description"
         ]

@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from .models import Event, Client
+from .models import Event, Client, Matrix
 from .forms import EventForm, ClientForm
 
 
@@ -56,4 +56,26 @@ class ClientView(ClientViewMixin, DeleteRecordMixin, DeleteView):
     ...
 
 class ClientDeleteView(ClientViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+
+class MatrixViewMixin:
+    model = Matrix
+    form_class = MatrixForm
+    success_url = reverse_lazy("matrix-list")
+
+
+class MatrixCreateView(MatrixViewMixin, CreateView):
+    ...
+
+
+class MatrixListView(MatrixViewMixin, ListView):
+    ...
+
+class MatrixUpdateView(MatrixViewMixin, UpdateView):
+    ...
+class MatrixView(MatrixViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+class MatrixDeleteView(MatrixViewMixin, DeleteRecordMixin, DeleteView):
     ...

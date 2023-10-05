@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends '../base.html' %}
+{% block content %}
+  <h2>
+    Matrizes
+    <small>| <a href="{% url 'matrix-create' %}">Novo</a></small>
+  </h2>
+  {% if object_list %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for matrix in object_list %}
+          <tr>
+            <td>{{ matrix.pk }}</td>
+            <td>{{ matrix.description }}</td>
+            <td>
+              <a href="{% url 'matrix-update' matrix.pk %}">Editar</a> |
+              <a href="{% url 'matrix-delete' matrix.pk %}">Apagar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não existe matriz cadastrada</p>
+  {% endif %}
+{% endblock %}

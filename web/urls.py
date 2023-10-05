@@ -27,5 +27,17 @@ urlpatterns = [
         views.ClientDeleteView.as_view(),
         name="client-delete",
     ),
+    path("matrix", views.MatrixListView.as_view(), name="matrix-list"),
+    path("matrix/new", views.MatrixCreateView.as_view(), name="matrix-create"),
+    path(
+        "matrix/<int:pk>/edit",
+        views.MatrixUpdateView.as_view(),
+        name="matrix-update",
+    ),
+    path(
+        "matrix/<int:pk>/delete",
+        views.MatrixDeleteView.as_view(),
+        name="matrix-delete",
+    ),
 
 ]

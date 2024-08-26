@@ -39,5 +39,16 @@ urlpatterns = [
         views.MatrixDeleteView.as_view(),
         name="matrix-delete",
     ),
-
+path("sample", views.SampleListView.as_view(), name="sample-list"),
+    path("sample/new", views.SampleCreateView.as_view(), name="sample-create"),
+    path(
+        "sample/<int:pk>/edit",
+        views.SampleUpdateView.as_view(),
+        name="sample-update",
+    ),
+    path(
+        "sample/<int:pk>/delete",
+        views.SampleDeleteView.as_view(),
+        name="sample-delete",
+    ),
 ]

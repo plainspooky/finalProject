@@ -1,0 +1,31 @@
+{% extends '../base.html' %}
+{% block content %}
+  <h2>
+    Amostras
+    <small>| <a href="{% url 'sample-create' %}">Nova</a></small>
+  </h2>
+  {% if object_list %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sample in object_list %}
+          <tr>
+            <td>{{ sample.pk }}</td>
+            <td>{{ sample.description }}</td>
+            <td>
+              <a href="{% url 'sample-update' sample.pk %}">Editar</a> |
+              <a href="{% url 'sample-delete' sample.pk %}">Apagar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não existe amostra cadastrada</p>
+  {% endif %}
+{% endblock %}

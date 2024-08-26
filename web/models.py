@@ -112,3 +112,25 @@ class Event(models.Model):
     )
     def __str__(self):
         return self.description
+
+class Sample(models.Model):
+    description = models.CharField(
+        help_text="Descrição de Amostra",
+        max_length=80,
+        verbose_name="descricao de amostra",
+    )
+    evalueted_local_sector = models.CharField(
+        help_text="Setor Avaliado",
+        max_length=80,
+        verbose_name="setor avaliado",
+    )
+    collection_time = models.CharField(
+        help_text="Hora da Coleta",
+        max_length=80,
+        verbose_name="hora da coleta",
+    )
+    collection_date = models.CharField(
+        help_text="Data da Coleta",
+        max_length=80,
+        verbose_name="data da coleta",
+    )

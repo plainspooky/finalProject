@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from .models import Event, Client, Matrix
-from .forms import EventForm, ClientForm, MatrixForm
+from .models import Event, Client, Matrix, Sample
+from .forms import EventForm, ClientForm, MatrixForm, SampleForm
 
 
 class DeleteRecordMixin:
@@ -78,4 +78,25 @@ class MatrixView(MatrixViewMixin, DeleteRecordMixin, DeleteView):
     ...
 
 class MatrixDeleteView(MatrixViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+class SampleViewMixin:
+    model = Sample
+    form_class = SampleForm
+    success_url = reverse_lazy("sample-list")
+
+
+class SampleCreateView(SampleViewMixin, CreateView):
+    ...
+
+
+class SampleListView(SampleViewMixin, ListView):
+    ...
+
+class SampleUpdateView(SampleViewMixin, UpdateView):
+    ...
+class SampleView(SampleViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+class SampleDeleteView(SampleViewMixin, DeleteRecordMixin, DeleteView):
     ...

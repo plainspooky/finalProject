@@ -7,17 +7,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administração
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Propostas</a></li>
+              <li><a class="dropdown-item" href="#">Contratos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Funcionários</a></li>
+            <li><a class="dropdown-item" href="{% url 'register_user' %}">Usuários</a></li>
+            <li><a class="dropdown-item" href="{% url 'client-list' %}">Clientes</a></li>
+          </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'event-list' %}">Eventos</a>
+          <a class="nav-link active" aria-current="page" href="#">Agenda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'client-list' %}">Clientes</a>
+          <a class="nav-link active" aria-current="page" href="#">Ordens de Serviços</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'matrix-list' %}">Matrizes</a>
+          <a class="nav-link active" href="{% url 'event-list' %}">Eventos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'matrix-list' %}">Matrizes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'sample-list' %}">Amostras</a>
@@ -36,10 +49,20 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+         </li>
+       {% else %}
+        <li class="nav-item">
+        <a class="nav-link active" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
       </ul>
+
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
       </form>
     </div>
   </div>

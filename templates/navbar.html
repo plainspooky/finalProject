@@ -1,7 +1,7 @@
 <!-- <a href="{% url 'event-list' %}">Simplims</a> | <a href="{% url 'event-list' %}">Eventos</a> | <a href="{% url 'client-list' %}">Clientes</a> | <a href="{% url 'matrix-list' %}">Matrizes</a> | <a href="{% url 'sample-list' %}">Amostras</a>  -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="">simpLIMS</a>
+    <a class="navbar-brand" href="home.html">simpLIMS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,7 +9,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Administração
+            Comercial
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Propostas</a></li>
@@ -20,8 +20,12 @@
             <li><a class="dropdown-item" href="{% url 'client-list' %}">Clientes</a></li>
           </ul>
         </li>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Agenda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Ordens de Serviços</a>
@@ -46,6 +50,16 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Listas
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Parâmetros</a></li>
+            <li><a class="dropdown-item" href="#">Metodologias</a></li>
+            <li><a class="dropdown-item" href="#">Licenças de Operação</a></li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
@@ -63,6 +77,18 @@
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
         <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+
+       <form class="d-flex">
+          <li class="nav-item">
+             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> {{ time }} </a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> {{ name }} </a>
+          </li>
+          <li  class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> ACME </a>
+          </li>
       </form>
     </div>
   </div>

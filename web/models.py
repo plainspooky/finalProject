@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Matrix(models.Model):
     description = models.CharField(
         help_text="nome da matriz",
@@ -21,6 +22,7 @@ class OtherDocuments(models.Model):
         max_length=200,
         verbose_name="nome da autarquia"
     )
+
 class Company(models.Model):
     class Meta:
         abstract = True
@@ -134,3 +136,23 @@ class Sample(models.Model):
         max_length=80,
         verbose_name="data da coleta",
     )
+
+class Parameter(models.Model):
+    standard = models.CharField(
+        help_text="Norma, Lei, Resolução",
+        max_length=200,
+        verbose_name="standard",
+    )
+
+    description = models.CharField(
+        help_text="Parâmetro",
+        max_length=200,
+        verbose_name="parametro"
+    )
+    type = models.CharField(
+        help_text="Tipos de Parâmetros(físico-químicos, microbiologicos)",
+        max_length=80,
+        verbose_name="tipos",
+    )
+    def __str__(self):
+        return self.description

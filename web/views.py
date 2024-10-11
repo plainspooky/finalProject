@@ -3,6 +3,65 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from .models import Event, Client, Matrix, Sample
 from .forms import EventForm, ClientForm, MatrixForm, SampleForm
+from datetime import datetime, timedelta
+from django.shortcuts import render
+import calendar
+from calendar import HTMLCalendar
+from datetime import datetime
+
+def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
+    name = "Andrimarciely"
+    month = month.capitalize()
+
+    # Convert month from name to number
+    month_number = list(calendar.month_name).index(month)
+    month_number = int(month_number)
+
+    # Create a calendar
+    cal = HTMLCalendar().formatmonth(year, month_number, withyear = True)
+
+    # Get current year
+    now = datetime.now()
+    current_year = now.year
+
+    # Get current time
+    time = now.strftime('%H:%M')
+
+    return render(request,'home.html',{
+        "name": name,
+        "year": year,
+        "month": month,
+        "month_number": month_number,
+        "cal": cal,
+        "current_year": current_year,
+        "time": time,
+        })
+
+
+def dashboard(request):
+    return render(request,'dashboard.html')
+
+
+def day(request, year: int, month: int, day: int):
+    """
+    Visualização dos eventos de um determinado dia, recebe a data em
+    formato ano/mês/dia como parâmtro.
+    """
+    day = datetime(year, month, day)
+    filted_events = Event.objects.filter(
+        date="{:%Y-%m-%d}".format(day)
+    ).order_by("-priority", "event")
+
+    context = {
+        "today": localdate(),
+        "day": day,
+        "events": filted_events,
+        "next": day + timedelta(days=1),
+        "previous": day - timedelta(days=1),
+        "priorities": Event.priorities_list,
+    }
+
+    return render(request, "day.html", context)
 
 
 class DeleteRecordMixin:

@@ -3,8 +3,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    #path('', views.home, name="home"),
-    path("", views.EventListView.as_view(), name="event-list"),
+    path("", views.home, name= "home"),
+    path("event/", views.EventListView.as_view(), name="event-list"),
+    path("dashboard", views.dashboard, name="dashboard"),
+    path("<int:year>/<int:month>/<int:day>", views.day, name="agenda-events-day"),
     path("event/new", views.EventCreateView.as_view(), name="event-create"),
     path(
         "event/<int:pk>/edit",

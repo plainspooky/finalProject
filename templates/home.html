@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,6 @@
 </head>
 <body>
 <center>
-    {% extends 'events/base.html' %}
-    {% block content %}
-
     <h1>Hello {{ name }}! </h1>
     <h2>Events For {{month}} {{ year }}</h2>
     As of {{ time }}
@@ -16,9 +14,7 @@
     <h3>{{ cal|safe }}</h3>
     <br/><br/><br/><br/>
     Copyright (c) {{current_year}}
-     <br/><br/><br/><br/>
-
-    {% endblock %}
+     <br/><br/><br/><brx'
 </center>
 </body>
 </html>

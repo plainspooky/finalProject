@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from .models import Event, Client, Matrix, Sample
-from .forms import EventForm, ClientForm, MatrixForm, SampleForm
+from .models import Event, Client, Matrix, Sample, Document, Product
+from .forms import EventForm, ClientForm, MatrixForm, SampleForm, DocumentForm, ProductForm
 from datetime import datetime, timedelta
 from django.shortcuts import render
 import calendar
@@ -158,4 +158,47 @@ class SampleView(SampleViewMixin, DeleteRecordMixin, DeleteView):
     ...
 
 class SampleDeleteView(SampleViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+class DocumentViewMixin:
+    model = Document
+    form_class = DocumentForm
+    success_url = reverse_lazy("document-list")
+
+
+class DocumentCreateView(DocumentViewMixin, CreateView):
+    ...
+
+
+class DocumentListView(DocumentViewMixin, ListView):
+    ...
+
+class DocumentUpdateView(DocumentViewMixin, UpdateView):
+    ...
+class DocumentView(DocumentViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+class DocumentDeleteView(DocumentViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+
+class ProductViewMixin:
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy("product-list")
+
+
+class ProductCreateView(ProductViewMixin, CreateView):
+    ...
+
+
+class ProductListView(ProductViewMixin, ListView):
+    ...
+
+class ProductUpdateView(ProductViewMixin, UpdateView):
+    ...
+class ProductView(ProductViewMixin, DeleteRecordMixin, DeleteView):
+    ...
+
+class ProductDeleteView(ProductViewMixin, DeleteRecordMixin, DeleteView):
     ...

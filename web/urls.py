@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name= "home"),
+    path("home.html", views.home, name= "home"),
     path("event/", views.EventListView.as_view(), name="event-list"),
     path("dashboard", views.dashboard, name="dashboard"),
     path("<int:year>/<int:month>/<int:day>", views.day, name="agenda-events-day"),
@@ -42,7 +43,7 @@ urlpatterns = [
         views.MatrixDeleteView.as_view(),
         name="matrix-delete",
     ),
-path("sample", views.SampleListView.as_view(), name="sample-list"),
+    path("sample", views.SampleListView.as_view(), name="sample-list"),
     path("sample/new", views.SampleCreateView.as_view(), name="sample-create"),
     path(
         "sample/<int:pk>/edit",
@@ -54,4 +55,29 @@ path("sample", views.SampleListView.as_view(), name="sample-list"),
         views.SampleDeleteView.as_view(),
         name="sample-delete",
     ),
+    path("document", views.DocumentListView.as_view(), name="document-list"),
+    path("document/new", views.DocumentCreateView.as_view(), name="document-create"),
+    path(
+        "document/<int:pk>/edit",
+        views.DocumentUpdateView.as_view(),
+        name="document-update",
+    ),
+    path(
+        "document/<int:pk>/delete",
+        views.DocumentDeleteView.as_view(),
+        name="document-delete",
+    ),
+    path("product", views.ProductListView.as_view(), name="product-list"),
+    path("product/new", views.ProductCreateView.as_view(), name="product-create"),
+    path(
+        "product/<int:pk>/edit",
+        views.ProductUpdateView.as_view(),
+        name="product-update",
+    ),
+    path(
+        "product/<int:pk>/delete",
+        views.ProductDeleteView.as_view(),
+        name="product-delete",
+    ),
+
 ]

@@ -1,5 +1,32 @@
 from django.db import models
 
+class Product(models.Model):
+    description = models.CharField(
+        help_text="nome do produto",
+        max_length=200,
+        verbose_name="produto"
+    )
+    code = models.CharField(
+        help_text="código",
+        max_length=50,
+        verbose_name="código",
+    )
+
+    amount = models.CharField(
+        help_text="quantidade",
+        max_length=50,
+        verbose_name="quantidade",
+    )
+
+    price = models.DecimalField(
+        help_text= "valor do produto",
+        max_digits= 10,
+        decimal_places=2,
+        verbose_name="preço"
+    )
+
+    def __str__(self):
+        return self.description
 
 class Matrix(models.Model):
     description = models.CharField(
@@ -7,11 +34,12 @@ class Matrix(models.Model):
         max_length=200,
         verbose_name="matriz"
     )
+
     def __str__(self):
         return self.description
 
 
-class OtherDocuments(models.Model):
+class Document(models.Model):
     registration_number = models.CharField(
         help_text="número de inscrição",
         max_length=50,
@@ -51,13 +79,14 @@ class Company(models.Model):
 
 '''The Contracted Company - The appraisal company - ACME '''
 class EnvironmentalConsultancy(Company):
-    other_documents = models.ForeignKey(
-        OtherDocuments,
+        document = models.ForeignKey(
+        Document,
         on_delete=models.CASCADE,
         verbose_name="Outros Documentos (licenças, registros e afins)"
-    )
-    def __str__(self):
-        return self.corporate_name
+        )
+
+        def __str__(self):
+            return self.corporate_name
 
 
 '''The Contracting Company - The appraised company '''

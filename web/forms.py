@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Event, Client, Matrix, Sample
+from .models import Event, Client, Matrix, Sample, Document, Product
 
 class EventForm(forms.ModelForm):
     class Meta:
@@ -36,6 +36,21 @@ class SampleForm(forms.ModelForm):
 
     class Meta:
         model = Sample
+        fields = [
+            "description"
+        ]
+class DocumentForm(forms.ModelForm):
+
+    class Meta:
+        model = Document
+        fields = [
+            "description"
+        ]
+
+class ProductForm(forms.ModelForm):
+
+    class Meta:
+        model = Product
         fields = [
             "description"
         ]

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, OtherDocuments, EnvironmentalConsultancy, Client, Matrix, Sample
+from .models import Event, Document, EnvironmentalConsultancy, Client, Matrix, Sample, Product
 
 """Admin class to customize class's models."""
 @admin.register(Event)
@@ -8,8 +8,8 @@ class EventAdmin(admin.ModelAdmin):
     list_display_links = ("description",)
     search_fields = ("description",)
 
-@admin.register(OtherDocuments)
-class OtherDocumentsAdmin(admin.ModelAdmin):
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
     list_display = (
         "description",
         "registration_number",
@@ -40,6 +40,12 @@ class MatrixAdmin(admin.ModelAdmin):
 
 @admin.register(Sample)
 class SampleAdmin(admin.ModelAdmin):
+    list_display = ("description",)
+    list_display_links = ("description",)
+    search_fields = ("description",)
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
     list_display = ("description",)
     list_display_links = ("description",)
     search_fields = ("description",)

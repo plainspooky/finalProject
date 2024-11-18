@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from .models import Event, Client, Matrix, Sample, Document, Product #, Service
-from .forms import EventForm, ClientForm, MatrixForm, SampleForm, DocumentForm, ProductForm #ServiceForm
+from .models import Event, Client, Matrix, Sample, Document, Product , Service
+from .forms import EventForm, ClientForm, MatrixForm, SampleForm, DocumentForm, ProductForm, ServiceForm
 from datetime import datetime, timedelta
 from django.shortcuts import render
 import calendar
@@ -204,23 +204,23 @@ class ProductDeleteView(ProductViewMixin, DeleteRecordMixin, DeleteView):
     ...
 
 
-#class ServiceViewMixin:
-#    model = Service
-#    form_class = ServiceForm
-#    success_url = reverse_lazy("service-list")
+class ServiceViewMixin:
+    model = Service
+    form_class = ServiceForm
+    success_url = reverse_lazy("service-list")
 
 
-#class ServiceCreateView(ServiceViewMixin, CreateView):
-#    ...
+class ServiceCreateView(ServiceViewMixin, CreateView):
+    ...
 
 
-#class ServiceListView(ServiceViewMixin, ListView):
-#    ...
+class ServiceListView(ServiceViewMixin, ListView):
+    ...
 
-#class ServiceUpdateView(ServiceViewMixin, UpdateView):
-#    ...
-#class ServiceView(ServiceViewMixin, DeleteRecordMixin, DeleteView):
-#    ...
+class ServiceUpdateView(ServiceViewMixin, UpdateView):
+    ...
+class ServiceView(ServiceViewMixin, DeleteRecordMixin, DeleteView):
+    ...
 
-#class ServiceDeleteView(ServiceViewMixin, DeleteRecordMixin, DeleteView):
-#    ...
+class ServiceDeleteView(ServiceViewMixin, DeleteRecordMixin, DeleteView):
+    ...

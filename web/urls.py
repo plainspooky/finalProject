@@ -79,16 +79,16 @@ urlpatterns = [
         views.ProductDeleteView.as_view(),
         name="product-delete",
     ),
-   # path("service", views.ServiceListView.as_view(), name="service-list"),
-   # path("service/new", views.ServiceCreateView.as_view(), name="service-create"),
-   # path(
-   #     "service/<int:pk>/edit",
-   #     views.ServiceUpdateView.as_view(),
-   #     name="service-update",
-    #),
-   # path(
-    #    "service/<int:pk>/delete",
-    #    views.ServiceDeleteView.as_view(),
-    #    name="service-delete",
-    # ),
+    path("service", views.ServiceListView.as_view(), name="service-list"),
+    path("service/new", views.ServiceCreateView.as_view(), name="service-create"),
+    path(
+        "service/<int:pk>/edit",
+        views.ServiceUpdateView.as_view(),
+        name="service-update",
+   ),
+    path(
+       "service/<int:pk>/delete",
+       views.ServiceDeleteView.as_view(),
+       name="service-delete",
+    ),
 ]

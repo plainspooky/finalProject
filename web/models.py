@@ -185,3 +185,27 @@ class Parameter(models.Model):
     )
     def __str__(self):
         return self.description
+
+class Service(models.Model):
+    description = models.CharField(
+        help_text="Descrição de Serviço",
+        max_length=200,
+        verbose_name="descricao de serviço",
+    )
+
+    price = models.DecimalField(
+        help_text="valor do serviço",
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="preço"
+    )
+
+    matrix = models.ForeignKey(
+        Matrix,
+        on_delete=models.CASCADE,
+        help_text="Tipo de matriz associada ao serviço",
+        verbose_name="tipo de matriz",
+    )
+
+    def __str__(self):
+        return f"{self.description} - {self.matrix}"

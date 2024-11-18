@@ -10,6 +10,8 @@
         <tr>
           <th>Id</th>
           <th>Descrição</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
         </tr>
       </thead>
       <tbody>
@@ -17,6 +19,8 @@
           <tr>
             <td>{{ product.pk }}</td>
             <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.amount }}</td>
             <td>
               <a href="{% url 'product-update' product.pk %}">Editar</a> |
               <a href="{% url 'product-delete' product.pk %}">Apagar</a>

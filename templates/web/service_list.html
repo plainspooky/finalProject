@@ -1,0 +1,33 @@
+{% extends '../base.html' %}
+{% block content %}
+  <h2>
+    Serviços
+    <small>| <a href="{% url 'service-create' %}">Novo</a></small>
+  </h2>
+  {% if object_list %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for service in object_list %}
+          <tr>
+            <td>{{ service.pk }}</td>
+            <td>{{ service.description }}</td>
+            <td>{{ service.price }}</td>
+            <td>
+              <a href="{% url 'service-update' service.pk %}">Editar</a> |
+              <a href="{% url 'service-delete' service.pk %}">Apagar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não existe serviço cadastrado</p>
+  {% endif %}
+{% endblock %}

@@ -55,6 +55,11 @@ class Company(models.Model):
     class Meta:
         abstract = True
 
+    nickname = models.CharField(
+        help_text="apelido ou abreviação",
+        max_length=200,
+        verbose_name="empresa",
+    )
     corporate_name = models.CharField(
         help_text="razão social da empresa contratada",
         max_length=200,
@@ -209,3 +214,23 @@ class Service(models.Model):
 
     def __str__(self):
         return f"{self.description} - {self.matrix}"
+
+
+class Proposal(models.Model):
+    objective = models.CharField(
+        help_text="Objetivo da Proposta",
+        max_length=300,
+        verbose_name="objetivo",
+    )
+
+    collection_date = models.DateField(
+        help_text="data de coleta",
+    )
+
+    legal_basis = models.CharField(
+        help_text="Objetivo da Proposta",
+        max_length=300,
+        verbose_name="objetivo",
+    )
+
+

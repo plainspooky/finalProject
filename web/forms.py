@@ -17,6 +17,7 @@ class ClientForm(forms.ModelForm):
         model = Client
         fields = [
             "corporate_name",
+            "nickname",
             "address",
             "phone_fax",
             "cnpj",

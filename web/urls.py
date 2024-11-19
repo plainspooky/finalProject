@@ -91,4 +91,17 @@ urlpatterns = [
        views.ServiceDeleteView.as_view(),
        name="service-delete",
     ),
+
+    path("proposal", views.ProposalListView.as_view(), name="proposal-list"),
+    path("proposal/new", views.ProposalCreateView.as_view(), name="proposal-create"),
+    path(
+        "proposal/<int:pk>/edit",
+        views.ProposalUpdateView.as_view(),
+        name="proposal-update",
+    ),
+    path(
+        "proposal/<int:pk>/delete",
+        views.ProposalDeleteView.as_view(),
+        name="proposal-delete",
+    ),
 ]

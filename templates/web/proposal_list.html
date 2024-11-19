@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends '../base.html' %}
+{% block content %}
+  <h2>
+    Proposta
+    <small>| <a href="{% url 'proposal-create' %}">Nova</a></small>
+  </h2>
+  {% if object_list %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Objetivo</th>
+          <th>Data de Coleta</th>
+          <th>Base Legal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for proposal in object_list %}
+          <tr>
+            <td>{{ proposal.pk }}</td>
+            <td>{{ proposal.objective }}</td>
+            <td>{{ proposal.collection_date }}</td>
+            <td>{{ proposal.legal_basis }}</td>
+            <td>
+              <a href="{% url 'proposal-update' proposal.pk %}">Editar</a> |
+              <a href="{% url 'proposal-delete' proposal.pk %}">Apagar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Não existe proposta cadastrada</p>
+  {% endif %}
+{% endblock %}

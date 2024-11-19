@@ -10,7 +10,7 @@
         <tr>
           <th>Id</th>
           <th>Cliente</th>
-          <th>Responsável</th>
+          <th>Data de Coleta</th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +18,7 @@
           <tr>
             <td>{{ client.pk }}</td>
             <td>{{ client.corporate_name }}</td>
-            <td>{{ client.responsible_contact }}</td>
+            <td>{{ client.legal_basis }}</td>
             <td>
               <a href="{% url 'client-update' client.pk %}">Editar</a> |
               <a href="{% url 'client-delete' client.pk %}">Apagar</a>

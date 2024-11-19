@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Event, Client, Matrix, Sample, Document, Product, Service
+from .models import Event, Client, Matrix, Sample, Document, Product, Service, Proposal
 
 class EventForm(forms.ModelForm):
     class Meta:
@@ -65,4 +65,14 @@ class ServiceForm(forms.ModelForm):
         fields = [
             "description",
             "price",
+       ]
+
+class ProposalForm(forms.ModelForm):
+
+    class Meta:
+        model = Proposal
+        fields = [
+            "id",
+            "client",
+            "objective",
        ]

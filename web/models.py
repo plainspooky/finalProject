@@ -217,6 +217,16 @@ class Service(models.Model):
 
 
 class Proposal(models.Model):
+    client = models.ForeignKey(
+        Client,
+        on_delete= models.CASCADE,
+        related_name = "proposals",
+        help_text="Cliente associado à proposta",
+        verbose_name="cliente",
+        null= True,
+        blank=True,
+    )
+
     objective = models.CharField(
         help_text="Objetivo da Proposta",
         max_length=300,
@@ -233,4 +243,5 @@ class Proposal(models.Model):
         verbose_name="objetivo",
     )
 
-
+    def __str__(self):
+        return f"Proposta número {self.id} para {self.client} - {self.objectove[:50]}"

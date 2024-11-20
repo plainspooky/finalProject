@@ -243,5 +243,12 @@ class Proposal(models.Model):
         verbose_name="objetivo",
     )
 
+    services = models.ManyToManyField(
+        Service,
+        related_name="proposals",
+        help_text="Lista de Serviços",
+        verbose_name="serviços"
+    )
+
     def __str__(self):
         return f"Proposta número {self.id} para {self.client} - {self.objectove[:50]}"

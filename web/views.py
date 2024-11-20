@@ -228,8 +228,9 @@ class ServiceDeleteView(ServiceViewMixin, DeleteRecordMixin, DeleteView):
 
 class ProposalViewMixin:
     model = Proposal
-    form_class = ProposalForm
+    form_class = ProductForm
     success_url = reverse_lazy("proposal-list")
+
 
 class ProposalCreateView(ProposalViewMixin, CreateView):
     ...

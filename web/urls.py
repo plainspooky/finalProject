@@ -91,9 +91,9 @@ urlpatterns = [
        views.ServiceDeleteView.as_view(),
        name="service-delete",
     ),
-    path("proposal/new", views.ProposalCreateView.as_view(), name="proposal-create"),
-    path("proposal", views.ProposalListView.as_view(), name="proposal-list"),
 
+    path("proposal", views.ProposalListView.as_view(), name="proposal-list"),
+    path("proposal/new", views.ProposalCreateView.as_view(), name="proposal-create"),
     path(
         "proposal/<int:pk>/edit",
         views.ProposalUpdateView.as_view(),

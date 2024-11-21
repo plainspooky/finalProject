@@ -244,4 +244,4 @@ class Proposal(models.Model):
     )
 
     def __str__(self):
-        return f"Proposta número {self.id} para {self.client} - {self.objectove[:50]}"
+        return f"Proposta número {self.id} para {self.client} - {self.objective[:50]}"
